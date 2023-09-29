@@ -18,3 +18,8 @@ model = load_model("modelh5")
 with st.form("my_form"):
    st.write("Upload Dogs Picture")
    uploaded_file = st.file_uploader("Choose a file")
+
+   # Every form must have a submit button.
+   submitted = st.form_submit_button("Submit")
+   if submitted:
+      print('submited')
