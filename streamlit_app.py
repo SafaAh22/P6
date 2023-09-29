@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import joblib
 import pandas as pd
 import sklearn
 import tensorflow
@@ -14,6 +15,8 @@ st.write('Projet 6')
 
 # Load the model from the directory
 model = load_model("modelh5")
+
+multilab_bin = joblib.load('multilab_bin2')
 
 # Define a function to load and preprocess image
 def load_and_preprocess_image(uploaded_file):
@@ -36,3 +39,10 @@ with st.form("my_form"):
    submitted = st.form_submit_button("Submit")
    if submitted:
       if uploaded_file is not None:
+        img_array = load_and_preprocess_image(uploaded_file)
+        # Make prediction
+        prediction = model.predict(img_array)
+        predicted_class = np.argmax(prediction)
+        st.write(predicted_class)
+      else:
+        st.write("Please upload an image.")
