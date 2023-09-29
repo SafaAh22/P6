@@ -6,5 +6,7 @@ import tensorflow
 import tensorflow_hub as hub
 from tensorflow.keras.models import load_model
 
+st.write('Projet 6')
+
 # Load the model from the directory
-model = load_model("modelh5.h5")
+model = load_model("modelh5")
