@@ -30,6 +30,8 @@ def load_and_preprocess_image(uploaded_file):
     # Normalize the image
     img_array /= 255.
 
+    return img_array
+
 
 with st.form("my_form"):
    st.write("Upload Dogs Picture")
