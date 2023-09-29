@@ -16,7 +16,7 @@ st.write('Projet 6')
 # Load the model from the directory
 model = load_model("modelh5")
 
-multilab_bin = joblib.load('multilab_bin2')
+breed_names = joblib.load('breed_names.joblib')
 
 # Define a function to load and preprocess image
 def load_and_preprocess_image(uploaded_file):
@@ -45,8 +45,7 @@ with st.form("my_form"):
         # Make prediction
         prediction = model.predict(img_array)
         predicted_class = np.argmax(prediction)
-        # Display the predicted class
-        class_names = multilab_bin.classes_  # Assuming your joblib load provides this
-        st.write(f"Predicted class: {class_names[predicted_class]}")
+        predicted_breed = breed_names[predicted_class]
+        st.write(f"Predicted breed: {predicted_breed}")
       else:
         st.write("Please upload an image.")
