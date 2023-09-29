@@ -47,5 +47,6 @@ with st.form("my_form"):
         predicted_class = np.argmax(prediction)
         predicted_breed = breed_names[predicted_class]
         st.write(f"Predicted breed: {predicted_breed}")
+        st.image(uploaded_file)
       else:
         st.write("Please upload an image.")
