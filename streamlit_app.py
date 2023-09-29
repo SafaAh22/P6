@@ -45,6 +45,8 @@ with st.form("my_form"):
         # Make prediction
         prediction = model.predict(img_array)
         predicted_class = np.argmax(prediction)
-        st.write(predicted_class)
+        # Display the predicted class
+        class_names = multilab_bin.classes_  # Assuming your joblib load provides this
+        st.write(f"Predicted class: {class_names[predicted_class]}")
       else:
         st.write("Please upload an image.")
