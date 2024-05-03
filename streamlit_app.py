@@ -19,7 +19,7 @@ st.write('Projet 6')
 # https://drive.google.com/file/d/1-QoHsHC0A2_9CA3NmqGcSU2ciNWTb8R5/view?usp=drive_link
 # Download the model from Google Drive
 file_id = '1-QoHsHC0A2_9CA3NmqGcSU2ciNWTb8R5'  # Replace with your file ID
-model_path = 'finalmodel.h5'
+model_path = 'InceptionV3modelh5'
 gdown.download(f'https://drive.google.com/uc?id={file_id}', model_path, quiet=False)
 
 # Load the model
