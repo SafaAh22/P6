@@ -14,7 +14,15 @@ from io import StringIO
 st.write('Projet 6')
 
 # Load the model from the directory
-model = load_model("finalmodelh5")
+# model = load_model("finalmodelh5")
+# https://drive.google.com/file/d/1-QoHsHC0A2_9CA3NmqGcSU2ciNWTb8R5/view?usp=drive_link
+# Download the model from Google Drive
+file_id = '1-QoHsHC0A2_9CA3NmqGcSU2ciNWTb8R5'  # Replace with your file ID
+model_path = 'finalmodel.h5'
+gdown.download(f'https://drive.google.com/uc?id={file_id}', model_path, quiet=False)
+
+# Load the model
+model = load_model(model_path)
 
 breed_names = joblib.load('breed_names.joblib')
 
