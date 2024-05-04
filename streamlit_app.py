@@ -11,16 +11,24 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 from PIL import Image
 from io import StringIO
+import requests
 
 st.write('Projet 6')
 
 # Load the model from the directory
 # model = load_model("finalmodelh5")
-# https://drive.google.com/file/d/1swbSjamy179ltn3ez01APDkdYDhELYPn/view?usp=drive_link
-# Download the model from Google Drive
-file_id = '1swbSjamy179ltn3ez01APDkdYDhELYPn'  # Replace with your file ID
+# URL to the Dropbox direct download link
+dropbox_url = 'https://www.dropbox.com/scl/fi/f7du9t15qxqz05aajihoi/InceptionV3modelh5.h5?rlkey=oa85yr9wzpjhy8vi4bpxxzht3&st=3j6ek61h&dl=1'
 model_path = 'InceptionV3modelh5.h5'
-gdown.download(f'https://drive.google.com/uc?id={file_id}', model_path, quiet=False)
+
+# Download the file from Dropbox
+with requests.get(dropbox_url, stream=True) as response:
+    with open(model_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=8192):
+            file.write(chunk)
+
+# Load the model
+model = load_model(model_path)
 
 # Load the model
 model = load_model(model_path)
